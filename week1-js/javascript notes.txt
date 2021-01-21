@@ -1,0 +1,135 @@
+equal to: ===
+not equal to: !==
+
+Math.sqrt(var)
+Math.abs(var)
+Math.ceil(var)
+Math.floor(var)
+
+Number.parseInt("string")
+Number.parseFloat("string")
+
+Math.random() * (max - min) + min
+
+"string".length
+
+"string".substring(starting_index, one_more_than_ending_index)
+"string".indexOf("substring", including_or_after_this_index)
+
+number.toString()
+
+array.length
+
+array.push(new_element_to_end)
+
+array.pop()
+
+array.unshift(new_element_to_front)
+
+array.shift() //remove element from front
+
+array.splice(index_of_new_item, amount_to_remove, new_item)
+array.splice(index_to_remove, amount_to_remove, new_items)
+
+Array.isArray(array)
+
+array.slice(starting_index, one_more_than_ending_index)
+array.slice() // copy
+
+new_arr = array1.concat(array2)
+
+array.join("") //creates a string from array elements
+
+"string".split(separator) //creates an array from string elements
+
+array.indexOf(element, including_or_after_this_index)
+
+
+delete object[key]
+
+typeof var  //doesnt do array
+
+Object.keys(obj)	//returns array
+
+Object.values(obj)	//returns array
+
+if (conditional) {} else if(another_conditional) {} else {}
+
+Falsy values:
+false
+0
+""
+null
+undefined
+NaN
+
+
+for (var num = 1; num <= 5; num++) {}
+
+while (conditional) {statement}
+
+
+continue //skip to the next iteration of the loop
+
+for (var _key_ in _object_) {}
+
+
+function nameOfFunction(/*list of parameters*/) {
+  /*statements that define the function*/
+}
+
+
+
+In the object.property syntax, the property must be a valid JavaScript identifier.
+
+
+In the object[property_name] syntax, the property_name is just a STRING or SYMBOL.
+
+
+
+Spread:
+function someNewFunction(...args){
+	//for every element in args
+		//do something
+}
+
+
+Default parameters:
+function someNewFunction(name = 'Brianna'){}
+
+
+function greet(greeting, name){
+	return `${greeting} ${name}! Welcome to our website`
+}
+
+
+for (var element of array){
+	//do something to every element of the array
+}
+
+
+const variable;
+//can update variable, but not reassign it
+let variable; 
+//can reassign
+
+
+array1.forEach(element => console.log(element));	//do something to each element
+const result = words.filter(word => word.length > 6);	//create new array with elements that fit this req
+const map1 = array1.map(x => x * 2)	//create new array with elements that have undergone the required change
+console.log(array1.reduce((accumulator, currentValue) => accumulator + currentValue)); 	//run reduce function over the array
+
+
+const fs = require('fs')
+fs.writeFile('file.txt', variable, (err) => {});
+
+
+
+
+//with the function keyword, puzzle will consider 'this' to be whatever called the function
+//with the arrow function, puzzle will consider 'this' to be where the function was declared
+
+
+
+
+

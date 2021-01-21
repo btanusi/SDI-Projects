@@ -1,0 +1,9 @@
+jest notes:
+
+npm init -y
+npm install jest
+
+in package.json > "test": "jest"
+
+in Class.test.js > const Class = require('../src/Class');
+in Class.js > module.exports = Class

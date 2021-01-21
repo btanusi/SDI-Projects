@@ -1,0 +1,105 @@
+Docker
+
+Setup:
+- start docker & open docker desktop
+- get info on docker:
+docker info
+- see all containers:
+docker ps -a
+- see all images:
+docker images
+- see all networks:
+docker network ls
+- see all volumes:
+docker volume ls
+
+- build an image tagging it "my_app" and using the Dockerfile in the relative path "."
+docker build -t my_app .
+
+- spin up a new container for image 'img' with name 'my_img', and have it delete itself & its volumes when stopped
+docker run img --name my_img --rm
+
+- spin up a new detached container for image 'img' with name 'my_img', mapping my localhost port 1000 to the img's port 80
+docker run -d img --name my_img -p 1000:80
+
+- restart a container
+docker start <container-name>
+
+- spin up a new container for 'img' with a volume, where the volume is in the working directory (pwd) and we want the file changes to be reflected in the container's /src/app directory
+docker run img -v $(pwd):/src/app 
+
+- spin up multiple containers & images into a bunch of services on a network (in a detached state)
+docker-compose up -d
+
+
+Cleanup:
+- literally remove it all
+docker system prune -a
+- stop & remove containers
+docker rm -f <container-name> <container-name>
+- remove an image //NOTE: cannot remove an image if container is still running
+docker rmi <image-name>
+- remove dangling volumes
+docker volume prune
+- shut down a docker compose and remove all images & all associated volumes
+docker-compose down --rmi all -v
+
+
+DOCKERHUB
+//given a dockerfile is in directory "."
+- build an image
+docker build -t btanusi/apidemo:latest .
+- push the image to Dockerhub
+docker push btanusi/apidemo:latest
+- pull the image chat_api, version v3.1 from chatterboxco's Dockerhub registry
+docker pull chatterboxco/chat_api:v3.1
+- pull & run the latest image for btanusi/apidemo
+docker run -p btanusi/apidemo:latest
+
+
+EXAMPLE DOCKER FILE
+# What image do you want to start building on?
+	#image name "img" and tag/version "latest"
+FROM img:latest
+
+# Make a folder in your IMAGE where your app's source code can live
+RUN mkdir -p /src/app
+
+# Tell your CONTAINER where your app's source code will live
+WORKDIR /src/app
+
+# What source code do you want to copy, and where to put it?
+	#copy source code from current directory "."
+COPY . /src/app
+
+# Does your app have any dependencies that should be installed?
+RUN yarn install
+
+# What port will the container talk to the outside world with once created?
+	#map localhost ports to the container's 3000 port
+EXPOSE 3000
+
+# How do you start your app?
+CMD [ "npm", "start" ]
+
+
+EXAMPLE docker-compose.yml FILE	
+version: '3'
+services:
+  survey:
+    build: survey_server/
+    depends_on:
+      - 'database'
+    ports: 
+      - '8080:8080'
+
+  results:
+    build: results_server/
+    depends_on:
+      - 'database'
+    ports:
+      - '3000:3000'
+
+  database:
+    image: mongo:latest
+

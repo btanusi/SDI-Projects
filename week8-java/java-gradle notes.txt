@@ -1,0 +1,21 @@
+To Build:
+./gradlew build
+
+To Test:
+./gradlew test
+
+Then Fix:
+build.gradle:
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.galvanize.AppClassName'
+        )
+    }
+}
+
+
+To Run:
+java -jar ./build/libs/AppClassName.jar

@@ -1,0 +1,19 @@
+brew services list
+brew services start postgresql
+psql postgres
+
+postgres=# CREATE DATABASE db_name;
+postgres=# \c db_name;
+
+db_name=# CREATE TABLE table_a (id serial PRIMARY KEY, name text);
+
+OR IN TERMINAL
+
+psql db_name < ~/Desktop/db_data
+
+
+postgres=# CREATE ROLE me WITH LOGIN PASSWORD 'password';
+postgres=# ALTER ROLE me CREATEDB;
+
+
+psql -h 127.0.0.1 -p 54825 -U my-username -W my-password my-database-name

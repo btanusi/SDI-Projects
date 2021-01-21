@@ -1,0 +1,37 @@
+spring app:
+
+http://start.spring.io/
+Gradle project
+Dependency > Spring Web
+Generate Project
+
+./gradlew bootRun
+http://localhost:8080/
+
+test:
+./gradlew clean test
+
+or:
+Edit Configurations > + > Android JUnit
+ > Use classpath of module > pick package that Test is in
+ > Class: > pick Test class
+ > Name: > type in name
+Run with Green Arrow
+
+
+BASIC CODE:
+
+package com.example.demo;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/")
+    public String helloWorld() {
+        return "Hello from Spring!";
+    }
+
+}

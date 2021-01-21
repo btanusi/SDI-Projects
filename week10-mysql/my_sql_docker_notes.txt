@@ -1,0 +1,35 @@
+CONNECT TO MYSQL FROM TERMINAL
+
+mysql -uroot
+mysql > create database example_db;
+mysql > use example_db;
+mysql > show tables;
+
+
+SETTING UP MYSQL IN DOCKER
+docker pull mysql:8
+docker run -d -e MYSQL_ROOT_PASSWORD=password mysql:8
+docker ps
+docker exec -it <Container ID> /bin/sh
+# mysql -uroot -p<password from your run>
+
+
+SETTING UP MYSQL IN DOCKER AND CONNECT TO LOCAL
+docker pull mysql:8
+docker run -d -p3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=password \
+    -e MYSQL_DATABASE=mydb \
+    -e MYSQL_USER=user \
+    -e MYSQL_PASSWORD=password \
+    mysql:8
+mysql -h127.0.0.1 -P3306 -uuser -ppassword
+
+
+SETTING UP MYSQL IN DOCKER WTIH FILE
+Create setup.sql
+Create Dockerfile
+docker build -t mydb .
+docker run -d -p 3306:3306 mydb
+mysql -uuser -ppassword mydb
+
+

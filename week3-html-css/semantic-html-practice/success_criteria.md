@@ -1,0 +1,15 @@
+- [] Uses a `<header>`
+- [] Uses a `<footer>`
+- [] Uses a `<main>`
+- [] Uses a `<nav>`
+- [] `<nav>` uses a `<ul>`
+- [] Uses an `<article>`
+- [] `<article>` has a `<header>`
+- [] `<time>` used for date
+- [] `<section>` used parts of articles
+- [] `<address>` used for email address
+- [] `<aside>` used for sidebar
+- [] `<article>` has a `<footer>`
+- [] "Also in the news" is a new `<section>`
+- [] `<details>` and `<summary>` used for the sports games
+- [] Copyright text is in `<small>`
